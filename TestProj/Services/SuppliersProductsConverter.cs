@@ -50,7 +50,7 @@ namespace TestProj.Services
                                 .FirstOrDefault(n => (string)n.Attribute(xmlNs + "lang") == "pol")?.Value ?? string.Empty,
                             Description = RemoveHtmlTags(productElement.Element("description")?.Elements("long_desc")
                                 .FirstOrDefault(ld => (string)ld.Attribute(xmlNs + "lang") == "pol")?.Value ?? string.Empty),
-                            Price = decimal.TryParse(productElement.Element("price")?.Attribute("gross")?.Value,
+                            Price = decimal.TryParse(productElement.Element("srp")?.Attribute("gross")?.Value,
                                 NumberStyles.Any, CultureInfo.InvariantCulture, out decimal price) ? price : 0,
                             StockQuantity = int.TryParse(productElement.Element("sizes")?.Element("size")?.Element("stock")?
                                 .Attribute("quantity")?.Value, NumberStyles.Any, CultureInfo.InvariantCulture, out int qty) ? qty : 0,
